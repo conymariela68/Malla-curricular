@@ -1,1 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Curricular - Química y Farmacia</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
 
+    <header>
+        <h1>Malla Curricular: Química y Farmacia</h1>
+        <div class="controls">
+            <p>Progreso: <span id="progress-percentage">0%</span></p>
+            <button onclick="resetMalla()" class="btn-reset">Reiniciar Malla</button>
+        </div>
+        <p class="instruction">Haz clic en un ramo para aprobarlo. Los ramos bloqueados (gris) requieren prerrequisitos.</p>
+    </header>
+
+    <div class="main-container">
+        <div id="malla-container" class="malla-grid"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
