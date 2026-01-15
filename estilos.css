@@ -1,1 +1,153 @@
+:root {
+    /* Paleta de Colores Pasteles Rosados */
+    --bg-color: #FFF0F5;          /* Lavender Blush */
+    --header-bg: #DB7093;         /* Pale Violet Red */
+    --col-bg-odd: #FFC0CB;        /* Pink */
+    --col-bg-even: #FFB6C1;       /* Light Pink */
+    --card-bg: #FFF;              /* White */
+    --card-hover: #FFF5F8;
+    
+    /* Estados */
+    --approved-bg: #FF69B4;       /* Hot Pink (suave) */
+    --approved-text: #fff;
+    --blocked-bg: #E0E0E0;        /* Gris claro */
+    --blocked-text: #888;
+    --text-color: #4A4A4A;
+}
 
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--header-bg);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+h1 { margin: 0; font-size: 1.8rem; }
+.instruction { font-size: 0.9rem; opacity: 0.9; margin-top: 5px; }
+
+.controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+.btn-reset {
+    background-color: white;
+    color: var(--header-bg);
+    border: none;
+    padding: 5px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+.btn-reset:hover { transform: scale(1.05); }
+
+/* Contenedor Principal con Scroll Horizontal */
+.main-container {
+    padding: 20px;
+    overflow-x: auto; /* Permite scroll lateral si hay muchos semestres */
+}
+
+.malla-grid {
+    display: flex; /* Disposición en columnas */
+    gap: 15px;
+    min-width: max-content; /* Asegura que no se aplasten las columnas */
+    padding-bottom: 20px;
+}
+
+/* Columnas de Semestres */
+.semester-column {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    width: 200px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 5px solid var(--header-bg);
+}
+
+.semester-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--header-bg);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* Tarjetas de Ramos */
+.subject-card {
+    background-color: var(--card-bg);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--header-bg);
+    font-size: 0.85rem;
+    position: relative;
+    user-select: none;
+}
+
+.subject-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: var(--card-hover);
+}
+
+/* Estado: Aprobado */
+.subject-card.approved {
+    background-color: var(--approved-bg);
+    color: var(--approved-text);
+    text-decoration: line-through;
+    border-left-color: #C71585; /* Medium Violet Red */
+    opacity: 0.8;
+}
+
+.subject-card.approved::after {
+    content: '✓';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-weight: bold;
+}
+
+/* Estado: Bloqueado */
+.subject-card.blocked {
+    background-color: var(--blocked-bg);
+    color: var(--blocked-text);
+    cursor: not-allowed;
+    border-left-color: #999;
+}
+
+.subject-card.blocked:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .malla-grid {
+        flex-direction: column; /* Cambia a lista vertical en móviles */
+        min-width: 100%;
+    }
+    .semester-column {
+        width: auto;
+    }
+}
